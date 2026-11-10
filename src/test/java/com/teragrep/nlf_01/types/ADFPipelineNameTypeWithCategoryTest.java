@@ -987,9 +987,9 @@ final class ADFPipelineNameTypeWithCategoryTest {
     @Test
     public void testAppNameWithMissingCategory() {
         final ParsedEvent parsedEvent = testEvent(
-                "src/test/resources/adfsandboxpipelinerun_missing_category_withcategory.json",
-                new EventPartitionContextStub(), new EventPropertiesStub(), new EventSystemPropertiesStub(),
-                new EnqueuedTimeStub(), new EventOffsetStub()
+                "src/test/resources/adfactivityrun_missing_category_withcategory.json", new EventPartitionContextStub(),
+                new EventPropertiesStub(), new EventSystemPropertiesStub(), new EnqueuedTimeStub(),
+                new EventOffsetStub()
         );
 
         final ADFPipelineNameTypeWithCategory type = new ADFPipelineNameTypeWithCategory(
@@ -998,6 +998,7 @@ final class ADFPipelineNameTypeWithCategoryTest {
                 "aer"
         );
 
-        Assertions.assertThrows(PluginException.class, type::appName);
+        final PluginException pluginException = Assertions.assertThrows(PluginException.class, type::appName);
+        Assertions.assertEquals("Key <[category]> was not valid", pluginException.getMessage());
     }
 }

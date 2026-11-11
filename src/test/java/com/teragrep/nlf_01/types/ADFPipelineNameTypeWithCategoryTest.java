@@ -987,7 +987,7 @@ final class ADFPipelineNameTypeWithCategoryTest {
     @Test
     public void testAppNameWithMissingCategory() {
         final ParsedEvent parsedEvent = testEvent(
-                "src/test/resources/adfactivityrun_missing_category_withcategory.json", new EventPartitionContextStub(),
+                "src/test/resources/adfactivityrun_missing_category.json", new EventPartitionContextStub(),
                 new EventPropertiesStub(), new EventSystemPropertiesStub(), new EnqueuedTimeStub(),
                 new EventOffsetStub()
         );
